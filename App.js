@@ -7,7 +7,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Header name="My awesome app" version={2} />
+      <Header name={appName} version={2}>
+        <Text>child 1</Text>
+      </Header>
     </View>
   );
 }
