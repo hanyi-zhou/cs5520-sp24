@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
+  const appName = "My awesome app";
   return (
-    const appName = "My awesome app";
     <View style={styles.container}>
       <Text>Welcome to {appName}</Text>
       <StatusBar style="auto" />
