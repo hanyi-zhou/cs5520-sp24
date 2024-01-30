@@ -8,7 +8,11 @@ export default function App() {
   const appName = "My awesome app";
   const [text, setText] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [goals, setGoals] = useState([]);
+
   function receiveInput(data) {
+    const newGoal = { text: data, id: Math.random() };
+    setGoals((currentGoals) => [...currentGoals, newGoal]);
     setText(data);
     setIsModalVisible(false);
   }
@@ -30,7 +34,13 @@ export default function App() {
         />
       </View>
       <View style={styles.bottomView}>
-        <Text style={styles.text}>{text}</Text>
+        {goals.map((goal) => (
+          <View style={styles.textContainer} key={goal.id}>
+            <Text style={styles.text}>{goal.text}</Text>
+          </View>
+        ))}
+        {/* {text ? <Text style={styles.text}>{text}</Text> : null} */}
+        {/* <Text style={styles.text}>{text}</Text> */}
       </View>
     </SafeAreaView>
   );
@@ -51,10 +61,10 @@ const styles = StyleSheet.create({
   bottomView: { flex: 4, backgroundColor: "lightpink", alignItems: "center" },
   text: {
     textAlign: "center",
-    fontSize: 20,
-    backgroundColor: "purple",
+    fontSize: 80,
     color: "white",
-    padding: 5,
-    marginTop: 5,
+    padding: 15,
+    borderRadius: 10,
   },
+  textContainer: { borderRadius: 10, backgroundColor: "purple", marginTop: 5 },
 });
