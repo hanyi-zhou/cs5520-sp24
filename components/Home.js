@@ -87,5 +87,5 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     alignItems: "center",
   },
-  bottomView: { flex: 4, backgroundColor: "lightpink" },
+  bottomView: { flex: 4, backgroundColor: "thistle" },
 });
