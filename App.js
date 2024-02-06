@@ -1,70 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text, Button, SafeAreaView } from "react-native";
-import Header from "./components/Header";
-import Input from "./components/Input";
-import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import Home from "./components/Home";
 
 export default function App() {
-  const appName = "My awesome app";
-  const [text, setText] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [goals, setGoals] = useState([]);
-
-  function receiveInput(data) {
-    const newGoal = { text: data, id: Math.random() };
-    setGoals((currentGoals) => [...currentGoals, newGoal]);
-    setText(data);
-    setIsModalVisible(false);
-  }
-  function dismissModal() {
-    setIsModalVisible(false);
-  }
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.topView}>
-        <StatusBar style="auto" />
-
-        <Header name={appName} version={2} />
-        <Button title="Add a goal" onPress={() => setIsModalVisible(true)} />
-        <Input
-          inputHandler={receiveInput}
-          modalVisible={isModalVisible}
-          dismissModal={dismissModal}
-        />
-      </View>
-      <View style={styles.bottomView}>
-        {goals.map((goal) => (
-          <View style={styles.textContainer} key={goal.id}>
-            <Text style={styles.text}>{goal.text}</Text>
-          </View>
-        ))}
-        {/* {text ? <Text style={styles.text}>{text}</Text> : null} */}
-        {/* <Text style={styles.text}>{text}</Text> */}
-      </View>
-    </SafeAreaView>
-  );
+  return <Home />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    // alignItems: "center",
-    justifyContent: "space-around",
-  },
-  topView: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
-  bottomView: { flex: 4, backgroundColor: "lightpink", alignItems: "center" },
-  text: {
-    textAlign: "center",
-    fontSize: 80,
-    color: "white",
-    padding: 15,
-    borderRadius: 10,
-  },
-  textContainer: { borderRadius: 10, backgroundColor: "purple", marginTop: 5 },
-});
+const styles = StyleSheet.create({});
