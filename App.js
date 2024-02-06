@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Home from "./components/Home";
 import { NavigationContainer } from "@react-navigation/native";
@@ -10,9 +10,26 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Details" component={GoalDetails} />
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: "#929" },
+          headerTintColor: "white",
+        }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerTitle: "All My Goals" }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={GoalDetails}
+          options={({ route }) => {
+            return {
+              headerTitle: route.params.goalData.text,
+            };
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

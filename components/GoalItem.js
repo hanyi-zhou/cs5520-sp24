@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     borderRadius: 10,
-    backgroundColor: "purple",
+    backgroundColor: "#929",
     marginTop: 5,
     flexDirection: "row",
     alignItems: "center",
