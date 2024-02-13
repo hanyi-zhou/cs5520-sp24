@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Button } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function GoalDetails({ navigation, route }) {
   const { goalData } = route.params;
@@ -9,10 +9,15 @@ export default function GoalDetails({ navigation, route }) {
     console.log("Warning");
     setWarning(true);
   }
-  navigation.setOptions({
-    headerRight: () => {
-      return <Button title="Warning" onPress={warningFunction} color="gray" />;
-    },
+  // functions inside useEffect are called after the rendering
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return (
+          <Button title="Warning" onPress={warningFunction} color="gray" />
+        );
+      },
+    });
   });
   return (
     <View>
